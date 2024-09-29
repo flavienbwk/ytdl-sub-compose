@@ -1,0 +1,24 @@
+services:
+  ytdl-sub:
+    image: ghcr.io/jmbannon/ytdl-sub-gui:latest
+    container_name: ytdl-sub
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+    volumes:
+      - config:/config
+      - tv_shows:/tv_shows  # optional
+      - movies:/movies  # optional
+      - music_videos:/music_videos  # optional
+      - music:/music  # optional
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+volumes:
+  config:
+  tv_shows:
+  movies:
+  music_videos:
+  music:
